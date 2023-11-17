@@ -22,8 +22,8 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('user_musics', function (Blueprint $table) {
-            $table->dropForeign('fk_action_user');
-            $table->dropForeign('fk_action_music');
+            $table->dropForeign('fk_user');
+            $table->dropForeign('fk_music');
         });
     }
 };
