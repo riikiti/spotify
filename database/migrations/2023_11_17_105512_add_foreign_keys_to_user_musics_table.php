@@ -11,8 +11,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('user_musics', function (Blueprint $table) {
-            $table->foreign(['user_id'], 'fk_user')->references(['id'])->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign(['music_id'], 'fk_music')->references(['id'])->on('musics')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign(['user_id'], 'fk_user_music')->references(['id'])->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign(['music_id'], 'fk_music_user')->references(['id'])->on('musics')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -22,8 +22,8 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('user_musics', function (Blueprint $table) {
-            $table->dropForeign('fk_action_user');
-            $table->dropForeign('fk_action_music');
+            $table->dropForeign('fk_user_music');
+            $table->dropForeign('fk_music_user');
         });
     }
 };

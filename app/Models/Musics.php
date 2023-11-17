@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Music extends Model
+class Musics extends Model
 {
     use HasFactory;
 
     //todo add field added to favorites from all users
-    protected $fillable = [
-        'name',
-        'music',
-        'logo',
-        'description',
-    ];
+    protected $table = 'musics';
+    protected  $fillable = ['name', 'music', 'logo', 'description',];
 }
