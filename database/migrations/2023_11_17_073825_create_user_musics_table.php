@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_music', function (Blueprint $table) {
+        Schema::create('user_musics', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->integer('music_id');
             $table->timestamps();
         });
     }

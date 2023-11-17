@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Music extends Model
 {
     use HasFactory;
+
+    //todo add field added to favorites from all users
+    protected $fillable = [
+        'name',
+        'music',
+        'logo',
+        'description',
+    ];
 }

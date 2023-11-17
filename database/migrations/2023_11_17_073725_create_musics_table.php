@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('music', function (Blueprint $table) {
+        Schema::create('musics', function (Blueprint $table) {
             $table->id();
+            $table->text('name');
+            $table->char('music');
+            $table->jsonb('logo');
+            $table->text('description');
             $table->timestamps();
         });
     }
