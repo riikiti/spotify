@@ -8,4 +8,5 @@
 <x-backpack::menu-item title="Users" icon="la la-question" :link="backpack_url('user')" />
 <x-backpack::menu-item title="User comments" icon="la la-question" :link="backpack_url('user-comment')" />
 <x-backpack::menu-item title="User music" icon="la la-question" :link="backpack_url('user-music')" />
-<x-backpack::menu-item title="User news" icon="la la-question" :link="backpack_url('user-news')" />
+<x-backpack::menu-item title="Admins" icon="la la-question" :link="backpack_url('admin')" />
+<x-backpack::menu-item title="News comments" icon="la la-question" :link="backpack_url('news-comment')" />

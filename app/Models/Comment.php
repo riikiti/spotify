@@ -11,4 +11,10 @@ class Comment extends Model
     use CrudTrait;
     //todo добавить лайки и дизлайки
     use HasFactory;
+
+    protected $fillable = [
+        'header',
+        'body',
+        'image'
+    ];
 }

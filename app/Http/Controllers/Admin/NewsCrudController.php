@@ -21,7 +21,7 @@ class NewsCrudController extends CrudController
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     * 
+     *
      * @return void
      */
     public function setup()
@@ -33,43 +33,51 @@ class NewsCrudController extends CrudController
 
     /**
      * Define what happens when the List operation is loaded.
-     * 
+     *
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // set columns from db columns.
+        $this->crud->column('id')->label('id');
+        $this->crud->column('header')->label('Название');
+        $this->crud->column('image')->label('Логотип');
+        $this->crud->column('body')->label('Описание');
+        $this->crud->column('posted_at')->label('Дата публикации');
+    }
 
-        /**
-         * Columns can be defined using the fluent syntax:
-         * - CRUD::column('price')->type('number');
-         */
+    protected function setupShowOperation()
+    {
+        $this->setupListOperation();
     }
 
     /**
      * Define what happens when the Create operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(NewsRequest::class);
-        CRUD::setFromDb(); // set fields from db columns.
-
-        /**
-         * Fields can be defined using the fluent syntax:
-         * - CRUD::field('price')->type('number');
-         */
+        $this->crud->field('header')->label('Навание');
+        $this->crud->field('body')->label('Описание');
+        $this->crud->addField([
+            'name' => 'image',
+            'label' => 'Картинка',
+            'type' => 'upload',
+            'disk' => 'public',
+            'prefix' => 'news',
+            'upload_fields' => [
+                'file_name' => 'file_name',
+                'disk' => 'disk',
+            ],
+            'withFiles' => true,
+        ]);
+        $this->crud->field('posted_at')->label('Дата и время публикации')
+            ->type('datetime')
+            ->attributes(['format' => 'DD/MM/YYYY HH:mm',]);
     }
 
-    /**
-     * Define what happens when the Update operation is loaded.
-     * 
-     * @see https://backpackforlaravel.com/docs/crud-operation-update
-     * @return void
-     */
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();

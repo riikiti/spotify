@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('user_news', function (Blueprint $table) {
-            $table->foreign(['user_id'], 'fk_user_news')->references(['id'])->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+        Schema::table('news_comments', function (Blueprint $table) {
+            $table->foreign(['comment_id'], 'fk_comment_news')->references(['id'])->on('comments')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign(['news_id'], 'fk_news_user')->references(['id'])->on('news')->onUpdate('CASCADE')->onDelete('CASCADE');
 
         });
@@ -23,8 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('user_news', function (Blueprint $table) {
-            $table->dropForeign('fk_user_news');
+        Schema::table('news_comments', function (Blueprint $table) {
+            $table->dropForeign('fk_comment_news');
             $table->dropForeign('fk_news_user');
         });
     }

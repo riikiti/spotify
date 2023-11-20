@@ -10,4 +10,11 @@ class News extends Model
 {
     use CrudTrait;
     use HasFactory;
+
+    protected $fillable = [
+        'header',
+        'body',
+        'image',
+        'posted_at'
+    ];
 }
