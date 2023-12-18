@@ -2,18 +2,19 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Music extends Model
+class News extends Model
 {
+    use CrudTrait;
     use HasFactory;
 
-    //todo add field added to favorites from all users
     protected $fillable = [
-        'name',
-        'music',
-        'logo',
-        'description',
+        'header',
+        'body',
+        'image',
+        'posted_at'
     ];
 }

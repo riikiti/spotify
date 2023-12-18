@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class UserMusic extends Model
+class UserComment extends Model
 {
     use CrudTrait;
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'music_id'
+        'comment_id'
     ];
 
     public function users(): BelongsTo
@@ -22,8 +22,8 @@ class UserMusic extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function music(): BelongsTo
+    public function comment(): BelongsTo
     {
-        return $this->belongsTo(Musics::class);
+        return $this->belongsTo(Comment::class);
     }
 }

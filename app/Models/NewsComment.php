@@ -6,24 +6,25 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class UserMusic extends Model
+class NewsComment extends Model
 {
     use CrudTrait;
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'music_id'
+        'comment_id',
+        'news_id'
     ];
 
-    public function users(): BelongsTo
+    public function news(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(News::class);
     }
 
-    public function music(): BelongsTo
+    public function comment(): BelongsToMany
     {
-        return $this->belongsTo(Musics::class);
+        return $this->belongsToMany(Comment::class);
     }
 }
